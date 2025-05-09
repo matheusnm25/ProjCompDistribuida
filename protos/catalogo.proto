@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package catalogo;
+
+service CatalogoService {
+  rpc ListarProdutos (Empty) returns (ListaProdutos);
+}
+
+message Empty {
+
+}
+
+message Produto {
+  string produto_id = 1;
+  string nome = 2;
+  int32 estoque = 3;
+}
+
+message ListaProdutos {
+  repeated Produto produtos = 1;
+}
