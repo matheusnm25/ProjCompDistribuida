@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package pedido;
+
+service PedidoService {
+  rpc CriarPedido (PedidoRequest) returns (PedidoResponse);
+}
+
+message PedidoRequest {
+  string produto_id = 1;
+  int32 quantidade = 2;
+  double valor_total = 3;
+}
+
+message PedidoResponse {
+  bool sucesso = 1;
+  string mensagem = 2;
+}

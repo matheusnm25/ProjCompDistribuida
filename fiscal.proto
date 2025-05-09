@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package fiscal;
+
+service FiscalService {
+  rpc EmitirNota (NotaRequest) returns (NotaResponse);
+}
+
+message NotaRequest {
+  string produto_id = 1;
+  int32 quantidade = 2;
+  double valor_total = 3;
+}
+
+message NotaResponse {
+  bool sucesso = 1;
+  string mensagem = 2;
+  string nota_id = 3;
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package pagamento;
+
+service PagamentoService {
+  rpc ProcessarPagamento (PagamentoRequest) returns (PagamentoResponse);
+}
+
+message PagamentoRequest {
+  string produto_id = 1;
+  int32 quantidade = 2;
+  double valor = 3;
+}
+
+message PagamentoResponse {
+  bool sucesso = 1;
+  string mensagem = 2;
+}

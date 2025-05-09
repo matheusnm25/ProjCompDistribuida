@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package estoque;
+
+service EstoqueService {
+  rpc SepararEstoque (EstoqueRequest) returns (EstoqueResponse);
+}
+
+message EstoqueRequest {
+  string produto_id = 1;
+  int32 quantidade = 2;
+}
+
+message EstoqueResponse {
+  bool sucesso = 1;
+  string mensagem = 2;
+}

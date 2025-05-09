@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package logistica;
+
+service LogisticaService {
+  rpc AgendarEnvio (EnvioRequest) returns (EnvioResponse);
+}
+
+message EnvioRequest {
+  string nota_id = 1;
+  string produto_id = 2;
+  int32 quantidade = 3;
+}
+
+message EnvioResponse {
+  bool sucesso = 1;
+  string mensagem = 2;
+}
