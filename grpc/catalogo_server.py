@@ -10,7 +10,7 @@ class CatalogoService(catalogo_pb2_grpc.CatalogoServiceServicer):
             catalogo_pb2.Produto(produto_id="2", nome="Produto B", estoque=50),
         ]
         return catalogo_pb2.ListaProdutos(produtos=produtos)
-
+    
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     catalogo_pb2_grpc.add_CatalogoServiceServicer_to_server(CatalogoService(), server)
