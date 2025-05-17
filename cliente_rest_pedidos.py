@@ -1,4 +1,8 @@
 import requests
+import sqlite3
+
+conn = sqlite3.connect("ecommerce.db")
+cursor = conn.cursor()
 
 def chamar(endpoint, json):
     print(f"[Pedido] Chamando {endpoint} com {json}")
@@ -9,17 +13,20 @@ def chamar(endpoint, json):
         print(f"→ Erro: {e}")
 
 def realizar_pedido():
-    pedido_id = 1
-    valor = 150.75
+    id = 1
     produto_id = 101
     quantidade = 2
+    #valor = ("SELECT FROM produtos 
+    #CONSULTAR VALOR DA TABELA PRODUTOS
     endereco = "Rua Exemplo, 123"
+    cpf = "440.598.840-49"
+    conn.commit()
 
-    chamar("http://localhost:8001/pagamentos", {"pedido_id": pedido_id, "valor": valor})
-    chamar("http://localhost:8002/estoque/separar", {"produto_id": produto_id, "quantidade": quantidade})
-    chamar("http://localhost:8003/nota_fiscal/gerar", {"pedido_id": pedido_id, "valor": valor})
-    chamar("http://localhost:8004/logistica/entregar", {"pedido_id": pedido_id, "endereco": endereco})
-    chamar("http://localhost:8005/catalogo/consultar", {"produto_id": produto_id})
+    chamar("http://localhost:8001/pagamentos", {"id": id, "quantidade_estoque":quantidade})
+    #chamar("http://localhost:8002/estoque/separar", {"id": id,"quantidade_estoque": quantidade})
+    #hamar("http://localhost:8003/nota_fiscal/gerar", {"pedido_id": pedido_id, "valor": valor, "cpf": cpf})
+    #chamar("http://localhost:8004/logistica/entregar", {"pedido_id": pedido_id, "endereco": endereco})
+    #chamar("http://localhost:8005/catalogo/consultar", {"produto_id": id})
 
 if __name__ == "__main__":
     realizar_pedido()

@@ -1,3 +1,5 @@
+# uvicorn servidor_rest_logistica:app --port 8004
+
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
 
